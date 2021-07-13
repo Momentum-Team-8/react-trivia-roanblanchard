@@ -5,23 +5,22 @@ import axios from 'axios'
 
 
 function App() {
-    const [questions, setQuestions] = useState([])
+    const [categories, setCategories] = useState([])
 
     useEffect(() => {
-        axios.get('https://opentdb.com/api.php?amount=10')
-            .then(res => setQuestions(res.data.results))
+        axios.get('https://opentdb.com/api_category.php')
+            .then(res => setCategories(res.data.trivia_categories))
     }, [])
 
-    console.log(questions)
+    console.log(categories)
 
     return (
         <>
         <h1>React Trivia</h1>
-        {questions.map(question => {
+        {categories.map(category => {
             return (
-                    <div>
-                        <h2>{question.category}</h2>
-                        <p>{question.question}</p>
+                    <div key={category.id}>
+                        <p>{category.name}</p>
                     </div>
             )
         })}
