@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const CategoryList = (props) => {
-    const { categories, setSelectedCategory } = props
+    const { categories, setSelectedCategory, selectedCategory } = props
     return (
             
         <>

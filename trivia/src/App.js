@@ -19,7 +19,7 @@ function App() {
         <>
         {selectedCategory 
             ? <CategoryQuestions selectedCategory={selectedCategory} categories={categories} setSelectedCategory={setSelectedCategory} />
-            : (<CategoryList categories={categories} setSelectedCategory={setSelectedCategory} />)
+            : (<CategoryList selectedCategory={selectedCategory} categories={categories} setSelectedCategory={setSelectedCategory} />)
         }
         </>
     )

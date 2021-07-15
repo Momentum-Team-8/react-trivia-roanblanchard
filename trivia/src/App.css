@@ -14,6 +14,10 @@ h1 {
     color: white;
 }
 
+h1:hover {
+    cursor: pointer;
+}
+
 
 .category-list {
     display: flex;
@@ -54,6 +58,41 @@ h1 {
     margin-top: 200px;
 }
 
+.cat-name {
+    margin-left: 20px;
+    margin-top: 20px;
+    padding: 5px;
+    width: fit-content;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.question {
+    margin-left: 20px;
+    margin-top: 50px;
+}
+
+.question > h2 {
+    background-color: #F39B6D;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.answer {
+    border: none;
+    margin-right: 20px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: medium;
+    border-radius: 5px;
+}
+
+.answer:hover {
+    background-color: #E9E3B4;
+    cursor: pointer;
+}
+
 .go-back {
     width: 200px;
     height: 50px;
@@ -62,6 +101,7 @@ h1 {
     font-size: 15px;
     margin-top: 100px;
     margin-left: 20px;
+    margin-bottom: 100px;
 }
 
 .go-back:hover {

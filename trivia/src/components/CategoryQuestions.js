@@ -6,7 +6,7 @@ export const CategoryQuestions = (props) => {
     const [questions, setQuestions] = useState({})
     const [loading, setLoading] = useState(true)
 
-    let { selectedCategory, categories, setSelectedCategory } = props
+    const { selectedCategory, categories, setSelectedCategory } = props
 
     useEffect(() => {
         getCategoryQuestions(selectedCategory).then(data => {
@@ -20,7 +20,8 @@ export const CategoryQuestions = (props) => {
             <p className="loading">'loading questions...'</p></>
         : (
             <>
-            <h1>React Trivia</h1>
+            <h1 onClick={() => setSelectedCategory(null)}>React Trivia</h1>
+            <h2 className="cat-name">{questions[0].category}</h2>
             {questions.map((data) => {
                 return (
                     <>
@@ -28,10 +29,10 @@ export const CategoryQuestions = (props) => {
                         <h2>{data.question}</h2>
                         {data.incorrect_answers.map((answer) => {
                             return(
-                            <button>{answer}</button>
+                            <button className="answer">{answer}</button>
                             )
                         })}
-                        <button>{data.correct_answer}</button>
+                        <button className="answer">{data.correct_answer}</button>
                     </div>
                     </>
                 )
