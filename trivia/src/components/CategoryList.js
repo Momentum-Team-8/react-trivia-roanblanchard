@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const CategoryList = (props) => {
-    const { categories } = props
+    const { categories, setSelectedCategory } = props
     return (
         <>
         <h1>React Trivia</h1>
@@ -9,6 +9,7 @@ export const CategoryList = (props) => {
             return (
                     <div key={category.id}>
                         <p>{category.name}</p>
+                        <button className='button' onClick={() => setSelectedCategory(category.id)}>Select category</button>
                     </div>
             )
         })}
