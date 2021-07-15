@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getCategoryQuestions } from '../api'
 import { CategoryList } from './CategoryList';
+import he from 'he'
 
 export const CategoryQuestions = (props) => {
     const [questions, setQuestions] = useState({})
@@ -15,6 +16,8 @@ export const CategoryQuestions = (props) => {
         })
     }, [selectedCategory])
 
+    
+
     return loading
         ?   <><h1>React Trivia</h1>
             <p className="loading">'loading questions...'</p></>
@@ -26,13 +29,13 @@ export const CategoryQuestions = (props) => {
                 return (
                     <>
                     <div className="question">
-                        <h2>{data.question}</h2>
+                        <h2>{he.decode(data.question)}</h2>
                         {data.incorrect_answers.map((answer) => {
-                            return(
-                            <button className="answer">{answer}</button>
+                            return (
+                            <button className="answer">{he.decode(answer)}</button>
                             )
                         })}
-                        <button className="answer">{data.correct_answer}</button>
+                        <button className="answer">{he.decode(data.correct_answer)}</button>
                     </div>
                     </>
                 )
