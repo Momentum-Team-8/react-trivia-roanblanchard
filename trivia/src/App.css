@@ -18,10 +18,12 @@ h1 {
 .category-list {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .category {
-    width: 250px;
+    width: 200px;
     margin: 40px;
 }
 
@@ -29,10 +31,11 @@ h1 {
     background-color: #F39B6D;
     padding: 5px;
     border-radius: 5px;
+    text-align: center;
 }
 
 .button {
-    width: 250px;
+    width: 200px;
     height: 100px;
     border: none;
     border-radius: 10px;
@@ -40,6 +43,28 @@ h1 {
 }
 
 .button:hover {
+    background-color: #E9E3B4;
+    cursor: pointer;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+}
+
+.go-back {
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    margin-top: 100px;
+    margin-left: 20px;
+}
+
+.go-back:hover {
     background-color: #E9E3B4;
     cursor: pointer;
 }

@@ -16,23 +16,27 @@ export const CategoryQuestions = (props) => {
     }, [selectedCategory])
 
     return loading
-        ? 'loading questions...'
+        ?   <><h1>React Trivia</h1>
+            <p className="loading">'loading questions...'</p></>
         : (
             <>
-            <button className='go-back' onClick={() => setSelectedCategory(null)}>Back to Category List</button>
+            <h1>React Trivia</h1>
             {questions.map((data) => {
                 return (
                     <>
-                    <h2>{data.question}</h2>
-                    {data.incorrect_answers.map((answer) => {
-                        return(
-                        <button>{answer}</button>
-                        )
-                    })}
-                    <button>{data.correct_answer}</button>
+                    <div className="question">
+                        <h2>{data.question}</h2>
+                        {data.incorrect_answers.map((answer) => {
+                            return(
+                            <button>{answer}</button>
+                            )
+                        })}
+                        <button>{data.correct_answer}</button>
+                    </div>
                     </>
                 )
             })}
+            <button className='go-back' onClick={() => setSelectedCategory(null)}>← Back to Category List</button>
             </>
         )
 }
