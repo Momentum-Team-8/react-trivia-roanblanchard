@@ -7,3 +7,39 @@
 body {
     font-family: 'Roboto', sans-serif;
 }
+
+h1 {
+    padding: 20px;
+    background-color: #3E6990;
+    color: white;
+}
+
+
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.category {
+    width: 250px;
+    margin: 40px;
+}
+
+.category > p {
+    background-color: #F39B6D;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.button {
+    width: 250px;
+    height: 100px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.button:hover {
+    background-color: #E9E3B4;
+    cursor: pointer;
+}
