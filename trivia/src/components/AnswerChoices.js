@@ -4,12 +4,10 @@ import he from 'he'
 
 export const AnswerChoices = ({ answers, setAnswered, checkAnswer, commitAnswer }) => {
   const { correctAnswer, incorrectAnswers } = answers
-//   const shuffledAnswers = useMemo(
-//     () => shuffle([correctAnswer, ...incorrectAnswers]),
-//     [correctAnswer, incorrectAnswers]
-//   )
+
 
 const allAnswers = [correctAnswer, ...incorrectAnswers]
+
 
 function shuffle(array) {
     let currentIndex = array.length,  randomIndex;
@@ -29,14 +27,13 @@ function shuffle(array) {
     return array;
   }
 
-const shuffledAnswers = shuffle(allAnswers)
-
   const handleClick = (answer) => {
     setAnswered(true)
-    checkAnswer(correctAnswer === answer)
+    console.log(answer)
+    checkAnswer(he.decode(correctAnswer) === answer)
     commitAnswer()
   };
-  return shuffledAnswers.map((item) => {
+  return shuffle(allAnswers).map((item) => {
     return (
       <button
         key={item}

@@ -18,12 +18,15 @@ export const CategoryQuestions = (props) => {
             setLoading(false)
         })
     }, [selectedCategory])
+    
 
     const commitAnswer = () => {
         if (correct) {
             console.log('correct')
+        } else {
+            console.log('incorrect')
+            setAnswered(false)
         }
-        setAnswered(false)
     }
 
     
