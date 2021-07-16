@@ -60,7 +60,6 @@ h1:hover {
 
 .cat-name {
     margin-left: 20px;
-    margin-top: 20px;
     padding: 5px;
     width: fit-content;
     border-right: 1px solid black;
@@ -69,7 +68,8 @@ h1:hover {
 
 .question {
     margin-left: 20px;
-    margin-top: 50px;
+    margin-top: 100px;
+    width: 50%;
 }
 
 .question > h2 {
@@ -99,9 +99,11 @@ h1:hover {
     border: none;
     border-radius: 10px;
     font-size: 15px;
-    margin-top: 100px;
-    margin-left: 20px;
-    margin-bottom: 100px;
+    margin-left: 80%;
+    margin-top: 20px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 20px;
 }
 
 .go-back:hover {

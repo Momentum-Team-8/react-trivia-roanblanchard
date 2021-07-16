@@ -24,6 +24,7 @@ export const CategoryQuestions = (props) => {
         : (
             <>
             <h1 onClick={() => setSelectedCategory(null)}>React Trivia</h1>
+            <button className='go-back' onClick={() => setSelectedCategory(null)}>← Back to Category List</button>
             <h2 className="cat-name">{questions[0].category}</h2>
             {questions.map((data) => {
                 return (
@@ -40,7 +41,7 @@ export const CategoryQuestions = (props) => {
                     </>
                 )
             })}
-            <button className='go-back' onClick={() => setSelectedCategory(null)}>← Back to Category List</button>
+            
             </>
         )
 }
