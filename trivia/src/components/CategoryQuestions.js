@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { getCategoryQuestions } from '../api'
 import { CategoryList } from './CategoryList';
 import he from 'he'
+import { AnswerChoices } from "./AnswerChoices"
 
 export const CategoryQuestions = (props) => {
     const [questions, setQuestions] = useState({})
     const [loading, setLoading] = useState(true)
+    const [answered, setAnswered] = useState(false)
+    const [correct, setCorrect] = useState(false)
 
     const { selectedCategory, categories, setSelectedCategory } = props
 
@@ -15,6 +18,13 @@ export const CategoryQuestions = (props) => {
             setLoading(false)
         })
     }, [selectedCategory])
+
+    const commitAnswer = () => {
+        if (correct) {
+            console.log('correct')
+        }
+        setAnswered(false)
+    }
 
     
 
@@ -31,12 +41,17 @@ export const CategoryQuestions = (props) => {
                     <>
                     <div className="question">
                         <h2>{he.decode(data.question)}</h2>
-                        {data.incorrect_answers.map((answer) => {
-                            return (
-                            <button className="answer">{he.decode(answer)}</button>
-                            )
-                        })}
-                        <button className="answer">{he.decode(data.correct_answer)}</button>
+                        <div>
+                            <AnswerChoices
+                                answers={{
+                                correctAnswer: data.correct_answer,
+                                incorrectAnswers: data.incorrect_answers,
+                                }}
+                                checkAnswer={setCorrect}
+                                setAnswered={setAnswered}
+                                commitAnswer={commitAnswer}
+                            />
+                        </div>
                     </div>
                     </>
                 )
