@@ -1,5 +1,4 @@
-import React, { useMemo } from 'react'
-import shuffle from 'lodash'
+import React from 'react'
 import he from 'he'
 
 export const AnswerChoices = ({ answers, setAnswered, checkAnswer, commitAnswer }) => {

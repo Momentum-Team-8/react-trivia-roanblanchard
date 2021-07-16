@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { getCategoryQuestions } from '../api'
-import { CategoryList } from './CategoryList';
 import he from 'he'
 import { AnswerChoices } from "./AnswerChoices"
 
@@ -10,7 +9,7 @@ export const CategoryQuestions = (props) => {
     const [answered, setAnswered] = useState(false)
     const [correct, setCorrect] = useState(false)
 
-    const { selectedCategory, categories, setSelectedCategory } = props
+    const { selectedCategory, setSelectedCategory } = props
 
     useEffect(() => {
         getCategoryQuestions(selectedCategory).then(data => {
@@ -21,8 +20,9 @@ export const CategoryQuestions = (props) => {
     
 
     const commitAnswer = () => {
-        if (correct) {
+        if (answered && correct) {
             console.log('correct')
+
         } else {
             console.log('incorrect')
             setAnswered(false)

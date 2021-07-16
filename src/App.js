@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import './App.css';
-import axios from 'axios'
 import { getCategoryList } from './api';
 import { CategoryList } from './components/CategoryList';
 import { CategoryQuestions } from './components/CategoryQuestions';
@@ -18,7 +17,7 @@ function App() {
     return (
         <>
         {selectedCategory 
-            ? <CategoryQuestions selectedCategory={selectedCategory} categories={categories} setSelectedCategory={setSelectedCategory} />
+            ? <CategoryQuestions selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
             : (<CategoryList selectedCategory={selectedCategory} categories={categories} setSelectedCategory={setSelectedCategory} />)
         }
         </>
