@@ -1,5 +1,6 @@
-import React, { useMemo } from 'react';
-import shuffle from 'lodash';
+import React, { useMemo } from 'react'
+import shuffle from 'lodash'
+import he from 'he'
 
 export const AnswerChoices = ({ answers, setAnswered, checkAnswer, commitAnswer }) => {
   const { correctAnswer, incorrectAnswers } = answers
@@ -41,10 +42,10 @@ const shuffledAnswers = shuffle(allAnswers)
         key={item}
         class='answer'
         onClick={() => {
-          handleClick(item)
+          handleClick(he.decode(item))
         }}
       >
-        {item}
+        {he.decode(item)}
       </button>
     )
   })
