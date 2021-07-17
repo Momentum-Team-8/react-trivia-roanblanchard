@@ -110,4 +110,27 @@ h1:hover {
 .go-back:hover {
     background-color: #E9E3B4;
     cursor: pointer;
+    
+}
+
+.answer-correct {
+    border: none;
+    margin-right: 20px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: medium;
+    border-radius: 5px;
+    background-color: #9cff7e;
+    cursor: pointer;
+}
+
+.answer-incorrect {
+    border: none;
+    margin-right: 20px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: medium;
+    border-radius: 5px;
+    background-color: #ff6565;
+    cursor: pointer;
 }

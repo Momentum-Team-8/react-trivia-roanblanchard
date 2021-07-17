@@ -6,8 +6,7 @@ import { AnswerChoices } from "./AnswerChoices"
 export const CategoryQuestions = (props) => {
     const [questions, setQuestions] = useState({})
     const [loading, setLoading] = useState(true)
-    const [answered, setAnswered] = useState(false)
-    const [correct, setCorrect] = useState(false)
+    
 
     const { selectedCategory, setSelectedCategory } = props
 
@@ -20,13 +19,7 @@ export const CategoryQuestions = (props) => {
     
 
     const commitAnswer = () => {
-        if (answered && correct) {
-            console.log('correct')
-
-        } else {
-            console.log('incorrect')
-            setAnswered(false)
-        }
+        
     }
 
     
@@ -50,8 +43,6 @@ export const CategoryQuestions = (props) => {
                                 correctAnswer: data.correct_answer,
                                 incorrectAnswers: data.incorrect_answers,
                                 }}
-                                checkAnswer={setCorrect}
-                                setAnswered={setAnswered}
                                 commitAnswer={commitAnswer}
                             />
                         </div>

@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import he from 'he'
 
-export const AnswerChoices = ({ answers, setAnswered, checkAnswer, commitAnswer }) => {
-  const { correctAnswer, incorrectAnswers } = answers
+export const AnswerChoices = ({ answers, commitAnswer }) => {
+    const [answered, setAnswered] = useState(false)
+    const [correct, setCorrect] = useState(false)
+    const { correctAnswer, incorrectAnswers } = answers
 
 
 const allAnswers = [correctAnswer, ...incorrectAnswers]
@@ -28,21 +30,50 @@ function shuffle(array) {
 
   const handleClick = (answer) => {
     setAnswered(true)
-    console.log(answer)
-    checkAnswer(he.decode(correctAnswer) === answer)
+    if (correctAnswer === answer) {
+        setCorrect(true)
+    }
     commitAnswer()
   };
-  return shuffle(allAnswers).map((item) => {
-    return (
-      <button
-        key={item}
-        class='answer'
-        onClick={() => {
-          handleClick(he.decode(item))
-        }}
-      >
-        {he.decode(item)}
-      </button>
-    )
-  })
+
+
+    if (answered && correct) {
+        return (
+            shuffle(allAnswers).map((item) => {
+                return (
+                  <button
+                    key={item}
+                    class='answer-correct'>
+                    {he.decode(item)}
+                  </button>
+                )
+              })
+        )
+    } else if (answered && correct === false) {
+        return (
+            shuffle(allAnswers).map((item) => {
+                return (
+                  <button
+                    key={item}
+                    class='answer-incorrect'>
+                    {he.decode(item)}
+                  </button>
+                )
+              })
+        )
+    } else {
+        return shuffle(allAnswers).map((item) => {
+            return (
+              <button
+                key={item}
+                class='answer'
+                onClick={() => {
+                  handleClick(he.decode(item))
+                }}
+              >
+                {he.decode(item)}
+              </button>
+            )
+          })
+    }
 }
