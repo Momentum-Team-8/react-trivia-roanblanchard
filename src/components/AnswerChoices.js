@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import he from 'he'
 
-export const AnswerChoices = ({ answers, commitAnswer }) => {
+export const AnswerChoices = ({ answers, commitAnswer, setScore, score }) => {
     const [answered, setAnswered] = useState(false)
     const [correct, setCorrect] = useState(false)
     const [shuffled, setShuffled] = useState([])
@@ -39,6 +39,7 @@ function shuffle(array) {
     setChoice(answer)
     if (correctAnswer === answer) {
         setCorrect(true)
+        setScore(score += 1)
     }
     commitAnswer()
   };
