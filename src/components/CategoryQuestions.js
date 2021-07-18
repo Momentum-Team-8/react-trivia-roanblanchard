@@ -30,7 +30,7 @@ export const CategoryQuestions = (props) => {
             <h1>React Trivia</h1>
             <div className='question'>
                 <h2>Game Over!</h2>
-                <p className='score'>You got {score} right, that's imperessive.</p>
+                <p className='score'>You got {score} right, that's impressive.</p>
                 <button className='answer' onClick={() => setSelectedCategory(null)}>Play again</button>
             </div>
             </>
