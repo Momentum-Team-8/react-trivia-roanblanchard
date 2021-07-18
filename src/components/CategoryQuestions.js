@@ -19,7 +19,7 @@ export const CategoryQuestions = (props) => {
     
 
     const commitAnswer = () => {
-        
+
     }
 
     

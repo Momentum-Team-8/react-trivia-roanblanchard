@@ -5,6 +5,7 @@ export const AnswerChoices = ({ answers, commitAnswer }) => {
     const [answered, setAnswered] = useState(false)
     const [correct, setCorrect] = useState(false)
     const [shuffled, setShuffled] = useState([])
+    const [choice, setChoice] = useState(null)
     const { correctAnswer, incorrectAnswers } = answers
 
 
@@ -32,45 +33,68 @@ function shuffle(array) {
     const shuffledAnswers = shuffle(allAnswers)
     setShuffled(shuffledAnswers)
   }
- 
-  console.log(shuffled)
-
-
-
-
 
   const handleClick = (answer) => {
     setAnswered(true)
+    setChoice(answer)
     if (correctAnswer === answer) {
         setCorrect(true)
     }
     commitAnswer()
   };
 
-
-
         if (answered && correct) {
             return (
                 shuffled.map((item) => {
-                    return (
-                      <button
-                        key={item}
-                        class='answer-correct'>
-                        {he.decode(item)}
-                      </button>
-                    )
+
+                    if (item === choice) {
+                        return (
+                            <button
+                              key={item}
+                              class='answer-correct'>
+                              {he.decode(item)}
+                            </button>
+                          )
+                    } else {
+                        return (
+                            <button
+                              key={item}
+                              class='answer'>
+                              {he.decode(item)}
+                            </button>
+                          )
+                    }
+                    
                   })
             )
         } else if (answered && correct === false) {
             return (
                 shuffled.map((item) => {
-                    return (
-                      <button
-                        key={item}
-                        class='answer-incorrect'>
-                        {he.decode(item)}
-                      </button>
-                    )
+                    if (item === choice) {
+                        return (
+                        <button
+                          key={item}
+                          class='answer-incorrect'>
+                          {he.decode(item)}
+                        </button>
+                      )
+                    } else if (item === correctAnswer) {
+                        return (
+                            <button
+                              key={item}
+                              class='answer-correct'>
+                              {he.decode(item)}
+                            </button>
+                          )
+                    } else {
+                        return (
+                            <button
+                              key={item}
+                              class='answer'>
+                              {he.decode(item)}
+                            </button>
+                          )
+                    }
                   })
             )
         } else {
