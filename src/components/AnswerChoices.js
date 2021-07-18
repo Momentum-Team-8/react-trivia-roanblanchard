@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import he from 'he'
 
 export const AnswerChoices = ({ answers, commitAnswer }) => {
     const [answered, setAnswered] = useState(false)
     const [correct, setCorrect] = useState(false)
+    const [shuffled, setShuffled] = useState([])
     const { correctAnswer, incorrectAnswers } = answers
 
 
@@ -24,9 +25,19 @@ function shuffle(array) {
       [array[currentIndex], array[randomIndex]] = [
         array[randomIndex], array[currentIndex]];
     }
-  
-    return array;
+    return array
   }
+
+  if (shuffled.length === 0) {
+    const shuffledAnswers = shuffle(allAnswers)
+    setShuffled(shuffledAnswers)
+  }
+ 
+  console.log(shuffled)
+
+
+
+
 
   const handleClick = (answer) => {
     setAnswered(true)
@@ -37,43 +48,45 @@ function shuffle(array) {
   };
 
 
-    if (answered && correct) {
-        return (
-            shuffle(allAnswers).map((item) => {
-                return (
-                  <button
-                    key={item}
-                    class='answer-correct'>
-                    {he.decode(item)}
-                  </button>
-                )
-              })
-        )
-    } else if (answered && correct === false) {
-        return (
-            shuffle(allAnswers).map((item) => {
-                return (
-                  <button
-                    key={item}
-                    class='answer-incorrect'>
-                    {he.decode(item)}
-                  </button>
-                )
-              })
-        )
-    } else {
-        return shuffle(allAnswers).map((item) => {
+
+        if (answered && correct) {
             return (
-              <button
-                key={item}
-                class='answer'
-                onClick={() => {
-                  handleClick(he.decode(item))
-                }}
-              >
-                {he.decode(item)}
-              </button>
+                shuffled.map((item) => {
+                    return (
+                      <button
+                        key={item}
+                        class='answer-correct'>
+                        {he.decode(item)}
+                      </button>
+                    )
+                  })
             )
-          })
-    }
+        } else if (answered && correct === false) {
+            return (
+                shuffled.map((item) => {
+                    return (
+                      <button
+                        key={item}
+                        class='answer-incorrect'>
+                        {he.decode(item)}
+                      </button>
+                    )
+                  })
+            )
+        } else {
+            return shuffled.map((item) => {
+                return (
+                  <button
+                    key={item}
+                    class='answer'
+                    onClick={() => {
+                      handleClick(he.decode(item))
+                    }}
+                  >
+                    {he.decode(item)}
+                  </button>
+                )
+              })
+        }
+    
 }
