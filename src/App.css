@@ -140,7 +140,7 @@ h1:hover {
     margin-bottom: 40px;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (min-width: 390px) and (max-width: 767px) {
     .go-back {
         margin-left: 290px;
     }
